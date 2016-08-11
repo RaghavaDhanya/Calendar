@@ -68,7 +68,7 @@ def prevb():  # on click previous button
 
 def okcall():  # ok button click inside go to date window
     if (year.get().isdigit() and month.get().isdigit()) and (
-                (0 < int(year.get()) < 10000) and (int(month.get()) < 13 and int(month.get()))):
+                (0 < int(year.get()) < 10000) and (0 < int(month.get()) < 13)):
         localv = globals()
         localv['yearInt'] = int(year.get())
         localv['monthInt'] = int(month.get())
