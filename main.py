@@ -1,8 +1,8 @@
-import calendar
-import ttk
-import tkFont
 import Tkinter
+import calendar
 import time
+import tkFont
+import ttk
 
 
 def sequence(*functions):  # to run 2 or more functions on button click
@@ -49,30 +49,30 @@ ctx = Tkinter.Text(top, padx=10, pady=10, bg="#f3e9ae", relief=Tkinter.FLAT, hei
 
 
 def nextb():  # on click next button
-    localv = globals()
-    localv['monthInt'] += 1
-    if localv['monthInt'] > 12:
-        localv['monthInt'] = localv['monthInt'] % 12
-        localv['yearInt'] += 1
-    update(localv['yearInt'], localv['monthInt'], localv['ctx'], localv['curtime'])
+    global monthInt, yearInt, ctx, curtime
+    monthInt += 1
+    if monthInt > 12:
+        monthInt = monthInt % 12
+        yearInt += 1
+    update(yearInt, monthInt, ctx, curtime)
 
 
 def prevb():  # on click previous button
-    localv = globals()
-    localv['monthInt'] -= 1
-    if localv['monthInt'] < 1:
-        localv['monthInt'] = 12
-        localv['yearInt'] -= 1
-    update(localv['yearInt'], localv['monthInt'], localv['ctx'], localv['curtime'])
+    global monthInt, yearInt, ctx, curtime
+    monthInt -= 1
+    if monthInt < 1:
+        monthInt = 12
+        yearInt -= 1
+    update(yearInt, monthInt, ctx, curtime)
 
 
 def okcall():  # ok button click inside go to date window
+    global monthInt, yearInt, ctx, curtime
     if (year.get().isdigit() and month.get().isdigit()) and (
                 (0 < int(year.get()) < 10000) and (0 < int(month.get()) < 13)):
-        localv = globals()
-        localv['yearInt'] = int(year.get())
-        localv['monthInt'] = int(month.get())
-        update(localv['yearInt'], localv['monthInt'], localv['ctx'], localv['curtime'])
+        yearInt = int(year.get())
+        monthInt = int(month.get())
+        update(yearInt, monthInt, ctx, curtime)
 
 
 def gotod():  # go to date window creation
@@ -131,11 +131,3 @@ ctx.pack()
 HLayout.pack()
 goto.pack()
 top.mainloop()
-
-
-
-
-
-
-
-    
